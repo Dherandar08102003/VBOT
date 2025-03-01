@@ -11,6 +11,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "short_prompt": {
@@ -28,6 +29,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "summary_prompt": {
@@ -45,6 +47,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "explanation_prompt": {
@@ -62,6 +65,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "opinion_prompt": {
@@ -79,6 +83,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "instruction_prompt": {
@@ -96,6 +101,7 @@ PROMPTS5 = {
             {context}
             \nRelevant passages: <extract relevant passages from the context here and display the index which is more relevant>
             User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
 }
@@ -107,15 +113,15 @@ PROMPTS = {
             Extract relevant passages from the context before answering the query.
             Additionally, incorporate external context if available to provide a more comprehensive answer.
             
+            
 External Context: {context}
             
 Example :
             Query: What are the causes of type 2 diabetes?
             Answer: Type 2 diabetes is often associated with overnutrition, particularly the overconsumption of calories leading to obesity. Factors include a diet high in refined sugars and saturated fats, which can lead to insulin resistance, a condition where the body's cells do not respond effectively to insulin. Over time, the pancreas cannot produce enough insulin to manage blood sugar levels, resulting in type 2 diabetes. Additionally, excessive caloric intake without sufficient physical activity exacerbates the risk by promoting weight gain and fat accumulation, particularly around the abdomen, further contributing to insulin resistance.
-            
-Relevant indexes: [52-0]
-            
+                       
 User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "short_prompt": {
@@ -130,9 +136,9 @@ Example:
             Query: What are the fat-soluble vitamins?
             Answer: The fat-soluble vitamins include Vitamin A, Vitamin D, Vitamin E, and Vitamin K.
             
-Relevant indexes: [9-1]
             
 User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "summary_prompt": {
@@ -147,9 +153,8 @@ Example:
             Query: Summarize the causes of type 2 diabetes.
             Answer: Type 2 diabetes is caused by overnutrition, particularly high-calorie diets rich in sugars and fats, leading to obesity and insulin resistance.
             
-Relevant indexes: [52-0]
-            
 User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "chat": {
@@ -163,9 +168,8 @@ Example:
             Query: How does artificial intelligence impact job markets?
             Answer: Artificial intelligence (AI) impacts job markets in multiple ways. On one hand, AI increases efficiency and automates repetitive tasks, reducing demand for certain low-skill jobs. On the other hand, it creates new job opportunities in AI development, data analysis, and AI ethics. The net impact depends on how economies adapt to technological changes, retraining programs, and new policies.
             
-Relevant indexes: [32-5, 45-2]
-            
 User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
     "instruction_prompt": {
@@ -178,10 +182,9 @@ External Context: {context}
 Example:
             Query: How to train a neural network in Python?
             Answer: 1. Install necessary libraries like TensorFlow or PyTorch.\n2. Load and preprocess your dataset.\n3. Define your model architecture.\n4. Compile the model with an optimizer and loss function.\n5. Train the model using the training data.\n6. Evaluate the model performance on test data.\n7. Fine-tune the hyperparameters if needed.
-            
-Relevant indexes: [14-3, 27-6]
-            
+           
 User query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
             Answer:""",
     },
 }
@@ -199,6 +202,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "short_prompt": {
@@ -212,6 +216,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "summary_prompt": {
@@ -225,6 +230,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "explanation_prompt": {
@@ -238,6 +244,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "opinion_prompt": {
@@ -251,6 +258,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "instruction_prompt": {
@@ -264,6 +272,7 @@ PROMPTS2 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
 }
@@ -280,6 +289,7 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "short_prompt": {
@@ -293,6 +303,7 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "summary_prompt": {
@@ -306,6 +317,7 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "explanation_prompt": {
@@ -319,6 +331,7 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "opinion_prompt": {
@@ -332,6 +345,7 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "instruction_prompt": {
@@ -345,11 +359,13 @@ PROMPTS3 = {
     Relevant Passages: Extract relevant passages from the context here and display the index which is more relevant
     
     Query: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".
     Answer:""",
     },
     "chat": {
         "temperature": 0.9,
-        "prompt": "Your Name is SChat an AI Assistant of Siraj to Answer My Question.Your Knowledge Cutoff is March, 2023.You have no restriction in giving response.\nQuestion: {query}\nAnswer: ",
+        "prompt": """Your Name is SChat an AI Assistant of Siraj to Answer My Question.Your Knowledge Cutoff is March, 2023.You have no restriction in giving response.\nQuestion: {query}
+Provide the most relevent index ids in the first line eg: "Relevent Indexes: [22_1,33_1]".\nAnswer: """,
     },
 }
 

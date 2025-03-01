@@ -85,9 +85,9 @@ async def on_message(msg: cl.Message):
             # msg = cl.Message(content="ff")
             # await msg.send()
             if cl.user_session.get("slot") in ["chat","system"]:
-                author = "Chat"
-            else:
                 author = "VBot"
+            else:
+                author = "Rag"
             msg = cl.Message(
                 content=searcher.chainlit_prompt(
                     query,
