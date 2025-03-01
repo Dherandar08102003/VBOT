@@ -26,10 +26,10 @@ if torch.cuda.is_available():  # which attention version to use
     llm_model, tokenizer, embed_model = get_model()
 
 
-@cl.author_rename
-def rename(orig_author: str):
-    rename_dict = {"Error": "BP", "Chatbot": "VBot"}
-    return rename_dict.get(orig_author, orig_author)
+# @cl.author_rename
+# def rename(orig_author: str):
+#     rename_dict = {"Error": "BP", "Chatbot": "VBot"}
+#     return rename_dict.get(orig_author, orig_author)
 
 
 @cl.on_chat_start
@@ -70,12 +70,10 @@ async def on_message(msg: cl.Message):
         msg1 = cl.ErrorMessage(content=cl.user_session.get("err"))
         await msg1.send()
         return
-    print(2)
 
     if query == ".pdf":
         await load_pdf_to_pinecone()
         return
-    print(3)
 
     if query == ".data":
         await load_pdf()
@@ -84,14 +82,13 @@ async def on_message(msg: cl.Message):
         try:
             print(55)
             searcher = cl.user_session.get("searcher")
-            msg = cl.Message(content="ff")
-            await msg.send()
+            # msg = cl.Message(content="ff")
+            # await msg.send()
 
             msg = cl.Message(
                 content=searcher.chainlit_prompt(
                     query,
                     cl.user_session.get("task"),
-                    cl.user_session.get("pc"),
                     cl.user_session.get("hf"),
                     cl.user_session.get("slot"),
                     cl.user_session.get("model"),
@@ -178,6 +175,7 @@ async def verify_keys(settings):
         try:
             print(pc.list_indexes().names())
             cl.user_session.get("searcher").set_pc(pc)
+            cl.user_session.get("ingester").set_pc(pc)
             # cl.user_session.set("pc", settings["pc_key"])
         except:
             message = "Invalid Pinecone Key"

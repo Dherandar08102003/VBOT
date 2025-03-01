@@ -1,8 +1,11 @@
 import os
 import re
+import requests
 import pandas as pd
+import numpy
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from pinecone import Pinecone
+import torch
 
 from RAG.entity.config_entity import SearchConfig
 from RAG.utils.common import setup_env
@@ -13,9 +16,9 @@ class SearchAndAnswer:
     def __init__(
         self,
         config: SearchConfig,
-        llm_model=None,
-        tokenizer=None,
-        embed_model=None,
+        llm_model,
+        tokenizer,
+        embed_model,
     ) -> None:
         self.config = config
         self.pc = None
@@ -54,9 +57,11 @@ class SearchAndAnswer:
             index = self.config.index_name
         index = self.pc.Index(index)
         embeddings = self.embedding_model.encode(query)
+        print("embedded")
         query_results = index.query(
             vector=embeddings.tolist(), top_k=self.config.top_k, include_values=True
         )
+        # print(4)
         return query_results
 
     def fetch_chunks(self, query_results, index):
@@ -66,6 +71,7 @@ class SearchAndAnswer:
                 item["sentence_chunk"] = self.dfs[index].loc[item["id"]][
                     "sentence_chunk"
                 ]
+            # print(query_results)
             return query_results
 
     def prompt_formatter(
@@ -154,7 +160,7 @@ class SearchAndAnswer:
         else:
             print(f"Error: {response.status_code}")
             print(response.json())
-            return None
+            return [{"generated_text":"None"}]
 
     def ask(self, query, context_items, prompt_type, hf_key, model, index):
         context = "- " + "\n- ".join(
@@ -203,7 +209,7 @@ class SearchAndAnswer:
             prompt = LLAMA[prompt_type].format(msg=query)
             self.chat += prompt
             prompt_set = {"prompt": self.chat, "temperature": 1}
-            answer = self.ask_gpu(self.chat, prompt_set["temperature"])
+            answer = self.ask_gpu(self.chat, "", prompt_set["temperature"])
             return answer
         elif prompt_type != "system" and model != "Llama-3(gpu)":
             if prompt_type == "system":
@@ -226,7 +232,7 @@ class SearchAndAnswer:
                     + LLAMA["user"].format(msg=base_prompt)
                 )
         if self.config.device_name == "cuda" and model == "Llama-3(gpu)":
-            answer = self.ask_gpu(base_prompt, prompt_set["temperature"])
+            answer = self.ask_gpu(base_prompt,"", prompt_set["temperature"])
         elif model != "Llama-3(gpu)":
             answer = self.ask_cpu(base_prompt, prompt_set["temperature"], hf_key, model)
         else:

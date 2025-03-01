@@ -1,13 +1,13 @@
-requests
-pandas
-numpy
-python-box==6.0.2
-pyYAML
-tqdm
-ensure==1.0.2
-python-dotenv
-joblib
-types-PyYAML
+# requests
+# pandas
+# numpy
+# python-box==6.0.2
+# pyYAML
+# tqdm
+# ensure==1.0.2
+# python-dotenv
+# joblib
+# types-PyYAML
 -e .
 
 

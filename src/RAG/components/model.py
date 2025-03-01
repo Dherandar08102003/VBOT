@@ -18,6 +18,7 @@ def get_model():
         attn_implementation = "sdpa"
     print(f"[INFO] Using attention implementation: {attn_implementation}")
 
+    # model_id = "../local_model"  # (we already set this above)
     model_id = "meta-llama/Meta-Llama-3-8B-Instruct"  # (we already set this above)
     print(f"[INFO] Using model_id: {model_id}")
 

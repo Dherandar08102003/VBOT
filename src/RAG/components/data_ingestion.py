@@ -14,12 +14,12 @@ from RAG import logger
 
 
 class DataIngestion:
-    def __init__(self, config: DataIngestionConfig, api_key):
+    def __init__(self, config: DataIngestionConfig, pc: object):
         self.config = config
         self.embedding_model = SentenceTransformer(
             model_name_or_path=self.config.model_name, device=self.config.device_name
         )
-        self.pc = Pinecone(api_key)
+        self.pc = pc
 
     def download_data(self):
         if not os.path.exists(self.config.local_data_file):
@@ -84,7 +84,7 @@ class DataIngestion:
 
     def split_chunks(self, pages_and_text: list, path=None) -> list:
         if not path:
-            path = self.config.root_dir + "/data"
+            path = os.path.join(self.config.root_dir, "data")
         pages_and_chunks = []
         for item in tqdm(pages_and_text):
             page_no = item["page_number"]
