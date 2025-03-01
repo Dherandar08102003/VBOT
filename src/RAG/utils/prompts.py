@@ -1,4 +1,4 @@
-PROMPTS = {
+PROMPTS5 = {
     "detailed_prompt": {
         "temperature": 0.3,
         "prompt": """Based on the following context items, please provide a detailed and explanatory answer to the query.
@@ -99,6 +99,93 @@ PROMPTS = {
             Answer:""",
     },
 }
+
+PROMPTS = {
+    "detailed_prompt": {
+        "temperature": 0.3,
+        "prompt": """Based on the following context items and external knowledge, please provide a detailed and explanatory answer to the query.
+            Extract relevant passages from the context before answering the query.
+            Additionally, incorporate external context if available to provide a more comprehensive answer.
+            
+External Context: {context}
+            
+Example :
+            Query: What are the causes of type 2 diabetes?
+            Answer: Type 2 diabetes is often associated with overnutrition, particularly the overconsumption of calories leading to obesity. Factors include a diet high in refined sugars and saturated fats, which can lead to insulin resistance, a condition where the body's cells do not respond effectively to insulin. Over time, the pancreas cannot produce enough insulin to manage blood sugar levels, resulting in type 2 diabetes. Additionally, excessive caloric intake without sufficient physical activity exacerbates the risk by promoting weight gain and fat accumulation, particularly around the abdomen, further contributing to insulin resistance.
+            
+Relevant indexes: [52-0]
+            
+User query: {query}
+            Answer:""",
+    },
+    "short_prompt": {
+        "temperature": 0.5,
+        "prompt": """Based on the following context items and external knowledge, please provide a concise answer to the query.
+            Extract relevant passages from the context before answering the query.
+            Additionally, incorporate external context if available to provide a more precise answer.
+            
+External Context: {context}
+            
+Example:
+            Query: What are the fat-soluble vitamins?
+            Answer: The fat-soluble vitamins include Vitamin A, Vitamin D, Vitamin E, and Vitamin K.
+            
+Relevant indexes: [9-1]
+            
+User query: {query}
+            Answer:""",
+    },
+    "summary_prompt": {
+        "temperature": 0.4,
+        "prompt": """Based on the following context items and external knowledge, please summarize the content.
+            Extract relevant passages from the context before providing the summary.
+            Additionally, incorporate external context if available to provide a broader understanding.
+            
+External Context: {context}
+            
+Example:
+            Query: Summarize the causes of type 2 diabetes.
+            Answer: Type 2 diabetes is caused by overnutrition, particularly high-calorie diets rich in sugars and fats, leading to obesity and insulin resistance.
+            
+Relevant indexes: [52-0]
+            
+User query: {query}
+            Answer:""",
+    },
+    "chat": {
+        "temperature": 0.4,
+        "prompt": """Based on the retrieved context items and your reasoning skills, provide a structured response to the given query.
+            Ensure the reasoning is logical, well-structured, and considers different perspectives when relevant.
+            
+External Context: {context}
+            
+Example:
+            Query: How does artificial intelligence impact job markets?
+            Answer: Artificial intelligence (AI) impacts job markets in multiple ways. On one hand, AI increases efficiency and automates repetitive tasks, reducing demand for certain low-skill jobs. On the other hand, it creates new job opportunities in AI development, data analysis, and AI ethics. The net impact depends on how economies adapt to technological changes, retraining programs, and new policies.
+            
+Relevant indexes: [32-5, 45-2]
+            
+User query: {query}
+            Answer:""",
+    },
+    "instruction_prompt": {
+        "temperature": 0.4,
+        "prompt": """Provide step-by-step instructions based on the given context and external knowledge.
+            Ensure clarity, logical progression, and practical applicability.
+            
+External Context: {context}
+            
+Example:
+            Query: How to train a neural network in Python?
+            Answer: 1. Install necessary libraries like TensorFlow or PyTorch.\n2. Load and preprocess your dataset.\n3. Define your model architecture.\n4. Compile the model with an optimizer and loss function.\n5. Train the model using the training data.\n6. Evaluate the model performance on test data.\n7. Fine-tune the hyperparameters if needed.
+            
+Relevant indexes: [14-3, 27-6]
+            
+User query: {query}
+            Answer:""",
+    },
+}
+
 
 PROMPTS2 = {
     "detailed_prompt": {

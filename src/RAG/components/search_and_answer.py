@@ -102,7 +102,6 @@ class SearchAndAnswer:
         format_answer_text=True,
         return_answer_only=True,
     ):
-
         # Create prompt template for instruction-tuned model
         # dialogue_template = [{"role": "user", "content": base_prompt}]
         # # Apply the chat template
@@ -189,7 +188,7 @@ class SearchAndAnswer:
                 answer = self.ask_gpu(prompt, prompt_set["temperature"], prompt_type)
             return answer
         elif prompt_type != "system" and model != "Llama-3(gpu)":
-            prompt_set = PROMPTS3[prompt_type]
+            prompt_set = PROMPTS[prompt_type]
             base_prompt = prompt_set["prompt"].format(context=context, query=query)
             answer = self.ask_cpu(base_prompt, prompt_set["temperature"], hf_key, model)
             return answer[0]["generated_text"].replace("Answer:", "")
@@ -214,7 +213,7 @@ class SearchAndAnswer:
         elif prompt_type != "system" and model != "Llama-3(gpu)":
             if prompt_type == "system":
                 return "system message cant be modified!"
-            prompt_set = PROMPTS3[prompt_type]
+            prompt_set = PROMPTS[prompt_type]
             context = "- " + "\n- ".join(
                 [
                     "Index[" + item["id"] + "]-" + item["sentence_chunk"]

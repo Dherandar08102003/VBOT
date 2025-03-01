@@ -23,8 +23,6 @@ query_type = Select(
         "detailed_prompt",
         "short_prompt",
         "summary_prompt",
-        "explanation_prompt",
-        "opinion_prompt",
         "instruction_prompt",
     ],
     initial_index=0,

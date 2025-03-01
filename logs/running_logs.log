@@ -1873,3 +1873,7 @@ AttributeError: 'RefusalDataIngestion' object has no attribute 'config'
 [2025-02-27 08:21:34,526: INFO: common: yaml file: config/config.yaml loaded successfully]
 [2025-02-27 08:21:34,528: INFO: common: yaml file: params.yaml loaded successfully]
 [2025-02-27 08:21:34,529: INFO: common: yaml file: schema.yaml loaded successfully]
+[2025-03-01 07:28:04,818: INFO: config: PyTorch version 2.2.1+cu118 available.]
+[2025-03-01 07:28:06,417: INFO: SentenceTransformer: Load pretrained SentenceTransformer: all-mpnet-base-v2]
+[2025-03-01 07:29:22,983: INFO: config: PyTorch version 2.2.1+cu118 available.]
+[2025-03-01 07:29:24,700: INFO: SentenceTransformer: Load pretrained SentenceTransformer: all-mpnet-base-v2]

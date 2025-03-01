@@ -28,13 +28,14 @@ if torch.cuda.is_available():  # which attention version to use
 
 # @cl.author_rename
 # def rename(orig_author: str):
-#     rename_dict = {"Error": "BP", "Chatbot": "VBot"}
+#     rename_dict = {"Chatbot": "VBot"}
 #     return rename_dict.get(orig_author, orig_author)
 
 
 @cl.on_chat_start
 async def start():
-
+    msg = cl.Message(content="Hey there! I'm VBot! Ready to assist—what can I do for you today? 🚀",author="Vbot")
+    await msg.send()
     # Create settings with the updated select elements
     settings = await cl.ChatSettings(
         [
@@ -49,7 +50,7 @@ async def start():
     cl.user_session.set("pc", "")
     cl.user_session.set("hf", "")
     cl.user_session.set("model", "Llama-3(gpu)")
-    cl.user_session.set("task", "")
+    cl.user_session.set("task", "chat")
     cl.user_session.set("paths", {"slot-1": "", "slot-2": "", "slot-3": ""})
     cl.user_session.set("slot", "chat")
     cl.user_session.set("ingester", DataIngestionPipeLine())
@@ -58,8 +59,7 @@ async def start():
     )
     cl.user_session.set("err", "Setup Api Keys")
     cl.user_session.set("pc_status", False)
-    msg = cl.Message(content=f"MySelf VBot,How Can I Help You")
-    await msg.send()
+    
 
 
 @cl.on_message
@@ -84,7 +84,10 @@ async def on_message(msg: cl.Message):
             searcher = cl.user_session.get("searcher")
             # msg = cl.Message(content="ff")
             # await msg.send()
-
+            if cl.user_session.get("slot") in ["chat","system"]:
+                author = "Chat"
+            else:
+                author = "VBot"
             msg = cl.Message(
                 content=searcher.chainlit_prompt(
                     query,
@@ -92,7 +95,8 @@ async def on_message(msg: cl.Message):
                     cl.user_session.get("hf"),
                     cl.user_session.get("slot"),
                     cl.user_session.get("model"),
-                )
+                ),
+                author=author
             )
             await msg.send()
 
@@ -170,6 +174,8 @@ async def load_pdf():
 
 @cl.on_settings_update
 async def verify_keys(settings):
+    cl.user_session.set("slot", settings["Pdf"])
+    cl.user_session.set("task", settings["Query"])
     if not cl.user_session.get("pc_status"):
         pc = Pinecone(settings["pc_key"])
         try:
@@ -202,5 +208,4 @@ async def verify_keys(settings):
         msg = cl.Message(content="All Set 😎!")
         await msg.send()
     # cl.user_session.set("model", settings["Model"])
-    cl.user_session.set("slot", settings["Pdf"])
-    cl.user_session.set("task", settings["Query"])
+    
