@@ -9,7 +9,8 @@ from tqdm.auto import tqdm
 from RAG.pipeline.stage_01_data_ingestion import DataIngestionPipeLine
 from RAG.pipeline.stage_02_search_answer import SearchAnswerPipeline
 from RAG.utils.wigets import pc_api, pdf_select, query_type
-
+from huggingface_hub import login
+login("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")
 setup_env()
 
 
